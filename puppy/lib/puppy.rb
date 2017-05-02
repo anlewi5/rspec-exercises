@@ -1,6 +1,11 @@
 class Puppy
+  # Creates an instance variable "state" that you can set in your class.
+  # "_reader" means other objects can read your state by calling "some_puppy.state".
+  attr_reader :state
+
   def initialize
-    # Your code here
+    # Puppies are calm at first.
+    @state = calm
   end
 
   def pet
