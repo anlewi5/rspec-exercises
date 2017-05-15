@@ -1,13 +1,7 @@
 module Calc
-  #idiom: ""
   class << self
     def add(*args)
-      sum = 0
-      args.each {
-        |number|
-        sum += number
-      }
-      return sum
+      args.reduce(:+)
     end
 
     def sub(a, b)
@@ -15,12 +9,7 @@ module Calc
     end
 
     def mul(*args)
-      prod = 1
-      args.each {
-        |number|
-        prod *= number
-      }
-      return prod
+      args.reduce(:*)
     end
 
     def div(a, b)
@@ -29,33 +18,16 @@ module Calc
     end
 
     def factors(n)
-      counter = n
-      factors = [n]
-      return "not a positive integer" if n <= 1
-      loop {
-        factors.push(counter - 1) if n % (counter - 1) === 0
-        counter -= 1
-        break if counter == 1
-      }
-      return factors.reverse
+      (1..n).find_all { |factor| n % factor == 0 }
     end
 
     def prime(n)
-      y = Calc.factors(n)
-      if y.length === 2
-        return true
-      else
-        return false
-      end
+      return false if n <= 1
+      factors(n).length == 2
     end
 
     def primes_in_range(first, last)
-      prime_array = []
-      (first..last).each {
-        |num|
-        prime_array.push(num) if Calc.prime(num) === true
-      }
-      return prime_array
+      (first..last).find_all { |num| Calc.prime(num) }
     end
   end
 end
