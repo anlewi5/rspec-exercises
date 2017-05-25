@@ -45,13 +45,6 @@ describe Calc do
     end
   end
 
-  describe '#factors' do
-    it 'lists the factors of a number' do
-      expect(Calc.factors 10).to eq [1, 2, 5, 10]
-      expect(Calc.factors 24).to eq [1, 2, 3, 4, 6, 8, 12, 24]
-    end
-  end
-
   describe '#prime' do
     it 'correctly determines primes' do
       expect(Calc.prime(-1)).to be false
