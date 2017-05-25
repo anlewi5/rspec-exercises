@@ -5,7 +5,7 @@ class Puppy
 
   def initialize
     # Puppies are calm at first.
-    @state = calm
+    @state = :calm
   end
 
   def pet
